@@ -26,14 +26,19 @@ const app = express();
    MIDDLEWARES
 ========================== */
 
-app.use(cors({
+const corsOptions = {
   origin: [
     process.env.FRONTEND_URL,
     'http://localhost:5173',
     'http://localhost:5174',
   ].filter(Boolean),
   credentials: true,
-}));
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Augmenter la taille maximale des requêtes JSON
 app.use(express.json({

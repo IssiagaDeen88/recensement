@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api, { exportFile } from '../api';
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const photoUrl = (photo) => photo ? (photo.startsWith('http') ? photo : `${BACKEND_URL}/${photo}`) : null;
 
 const People = () => {
